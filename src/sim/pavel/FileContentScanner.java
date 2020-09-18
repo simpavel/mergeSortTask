@@ -28,6 +28,7 @@ public class FileContentScanner {
 
     public String getValue() {
         System.out.println("testing");
+        System.out.println("stuffffff");
         return currentValue;
     }
 
