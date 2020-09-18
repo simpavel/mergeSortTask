@@ -1,26 +1,24 @@
-        Предисловие:
-    это моя первая самостоятельная "программа" такого масштаба))) я рад, что по краней мере она что-то делает - уже хорошо
-    наверное, тебя прошу её посмотреть, потому что глаз не набит у меня и я какие-то грубые ошибки допускаю.
-    в коде есть раздел с "что я дорабатываю" - это я скорее для себя написал
-    буду рад комментариям и пожеланиям!
-
-    в папке test у нас находятся файлы для проверки сортировки:
+    В папке test есть заготовки для проверки различных типов сортировки в соответствии с заданием:
 
           чисел по возрастанию - с именем in[i].txt
 входные аргументы для них:
 -a -i test\\out.txt test\\in1.txt test\\in2.txt test\\in3.txt test\\in4.txt test\\in5.txt
 
           чисел по убыванию - с именем in[i]reverse.txt
-входные аргументы для них:     -d -i test\\out.txt test\\in1reverse.txt test\\in2reverse.txt test\\in3reverse.txt test\\in4reverse.txt test\\in5reverse.txt
+входные аргументы для них:     -
+d -i test\\out.txt test\\in1reverse.txt test\\in2reverse.txt test\\in3reverse.txt test\\in4reverse.txt test\\in5reverse.txt
 
           строк по возрастанию - c именем in[i]str.txt
-входные аргументы для них:     -a -s test\\out.txt test\\in1str.txt test\\in2str.txt test\\in3str.txt test\\in4str.txt test\\in5str.txt
+входные аргументы для них:
+-a -s test\\out.txt test\\in1str.txt test\\in2str.txt test\\in3str.txt test\\in4str.txt test\\in5str.txt
 
           строк по убыванию - с именем in[i]strreverse.txt
-входные аргументы для них:     -d -i test\\out.txt test\\in1strreverse.txt test\\in2strreverse.txt test\\in3strreverse.txt test\\in4strreverse.txt test\\in5strreverse.txt
+входные аргументы для них:
+-d -i test\\out.txt test\\in1strreverse.txt test\\in2strreverse.txt test\\in3strreverse.txt test\\in4strreverse.txt test\\in5strreverse.txt
 
           имя выходного файла - out.txt
-          имя logger файла - LogFile.txt
+
+          имя log-файла - LogFile.txt
 
         Вопросы:
      1) не слишком ли много статиков в моей программе?
@@ -49,3 +47,4 @@
      3)         scanner.useDelimiter("\\n"); пока делал, забыл, зачем поставил, надо перепроверить, по-моему, для сортировки строк с пробелами/
      4) переделать regEx для поиска пробелов в сканнерах, этот не ловит, если пробел внутри строки
      5) я заметил, что Windows notepad не видит мои \\n, а notepad++ видит. Хз, надо ли с этим что-то делать
+     6) priorityqueue>
