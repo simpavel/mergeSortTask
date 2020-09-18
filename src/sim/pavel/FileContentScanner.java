@@ -49,7 +49,8 @@ public class FileContentScanner {
             BigInteger bigIntegerThisValue = new BigInteger(getValue().trim());
             BigInteger bigIntegerOtherValue = new BigInteger(other.getValue().trim());
             return bigIntegerThisValue.compareTo(bigIntegerOtherValue);
-        } else
+        } else {
             return getValue().trim().compareTo(other.getValue().trim());
+        }
     }
 }

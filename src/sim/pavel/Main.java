@@ -8,7 +8,7 @@ public class Main {
 
     public static void main(String[] args) {
         System.out.println("Logger name: " + log().getName() + "\nProgram starts with arguments: " + Arrays.toString(args));
-
+        System.out.println("String".compareTo("BB"));
         Properties properties = Properties.fromArgs(args);
 
         FileMerger fileMerger = new FileMerger(properties);
