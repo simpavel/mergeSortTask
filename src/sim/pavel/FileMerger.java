@@ -10,6 +10,7 @@ import java.util.logging.Level;
 import static sim.pavel.MyLogger.log;
 
 public class FileMerger { //Класс отвечает за слияние заранее отсортированных файлов в один большой отсортированный файл
+
     private ArrayList<FileContentScanner> scanners = new ArrayList<>(); //список сканнеров (каждый сканнер отвечает за отдельный входной файл)
     private final boolean descendingSortOrder;
     private final List<String> inputFileNames;
@@ -27,6 +28,11 @@ public class FileMerger { //Класс отвечает за слияние за
         } catch(Exception e) {
             e.printStackTrace();
         }
+    }
+
+    //добавил чтобы тесты делать
+    public ArrayList<FileContentScanner> getScanners() {
+        return scanners;
     }
 
     //возвращаем сканнер с наименьшим/наибольшим значением (в зависимости от метода сортировки)

@@ -2,12 +2,7 @@ package sim.pavel;
 
 import java.io.File;
 import java.math.BigInteger;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
-
-import static sim.pavel.MyLogger.log;
-
 //Данный класс предназначен для использования сканнеров (по одному на каждый входной файл).
 public class FileContentScanner {
     private Scanner scanner;

@@ -7,7 +7,8 @@
     в папке test у нас находятся файлы для проверки сортировки:
 
           чисел по возрастанию - с именем in[i].txt
-входные аргументы для них:     -a -i test\\out.txt test\\in1.txt test\\in2.txt test\\in3.txt test\\in4.txt test\\in5.txt
+входные аргументы для них:
+-a -i test\\out.txt test\\in1.txt test\\in2.txt test\\in3.txt test\\in4.txt test\\in5.txt
 
           чисел по убыванию - с именем in[i]reverse.txt
 входные аргументы для них:     -d -i test\\out.txt test\\in1reverse.txt test\\in2reverse.txt test\\in3reverse.txt test\\in4reverse.txt test\\in5reverse.txt
