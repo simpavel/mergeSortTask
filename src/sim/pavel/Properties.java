@@ -1,6 +1,5 @@
 package sim.pavel;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,14 +8,14 @@ import static sim.pavel.MyLogger.log;
 //в этом классе храним данные по входным и выходному файлам (входных может быть более одного)
 public class Properties {
     private final boolean descendingSortOrder; //Режим сортировки по умолчанию - возрастающий
-    private final boolean dataTypeIsInt; //Вид данных по умолчанию - String (вообще не уверен, зачем мне он нужен, я вроде в FileContentScanner.Compareto сделал так, чтобы было пофиг на вид данных
+    private final boolean dataTypeInt; //Вид данных по умолчанию - String (вообще не уверен, зачем мне он нужен, я вроде в FileContentScanner.Compareto сделал так, чтобы было пофиг на вид данных
     private final List<String> inputFileNames; //Список путей к входным файлам
     private final String outputFileName;
 
-    private Properties(boolean descendingSortOrder, boolean dataTypeIsInt,
+    private Properties(boolean descendingSortOrder, boolean dataTypeInt,
                        List<String> inputFileNames, String outputFileName) {
         this.descendingSortOrder = descendingSortOrder;
-        this.dataTypeIsInt = dataTypeIsInt;
+        this.dataTypeInt = dataTypeInt;
         this.inputFileNames = inputFileNames;
         this.outputFileName = outputFileName;
     }
@@ -50,8 +49,8 @@ public class Properties {
         return descendingSortOrder;
     }
 
-    public boolean isDataTypeIsInt() {
-        return dataTypeIsInt;
+    public boolean isDataTypeInt() {
+        return dataTypeInt;
     }
 
     public List<String> getInputFileNames() {

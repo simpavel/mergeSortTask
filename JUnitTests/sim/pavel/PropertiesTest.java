@@ -31,6 +31,12 @@ class PropertiesTest {
 
     @Test
     void isDescendingSortOrder() {
+        Properties properties = Properties.fromArgs(new String[] {"-i", "something", "something"});
+        assertFalse(properties.isDescendingSortOrder());
+        properties = Properties.fromArgs(new String[] {"-a", "something", "something"});
+        assertFalse(properties.isDescendingSortOrder());
+        properties = Properties.fromArgs(new String[] {"-d", "something", "something"});
+        assertTrue(properties.isDescendingSortOrder());
     }
 
     @Test
