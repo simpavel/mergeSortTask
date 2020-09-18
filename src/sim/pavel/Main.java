@@ -8,6 +8,7 @@ public class Main {
     //TODO bufferedReader - убираем классы со сканнером, делаем bufferedReader. Почему файл через бридер весит меньше??
     //TODO запретить использование строк, если выбран параметр (тип для строк пофиг, а для цифр сделаем)
     //TODO тесты для FileContentBufferedReaderScanner
+    //TODO сделать !инструкцию по запуску для задания
 
     public static void main(String[] args) {
 
