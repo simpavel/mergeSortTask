@@ -33,7 +33,7 @@ class FileContentScannerTest {
     @Test
     void setValue() {
         fileContentScanner.setValue(null);
-        assertEquals(null, fileContentScanner.getValue());
+        assertNull(fileContentScanner.getValue());
     }
 
     @Disabled
@@ -55,13 +55,13 @@ class FileContentScannerTest {
         assertTrue(fileContentScanner.compareTo(otherFileContentScanner) > 0);
         assertFalse(fileContentScanner.compareTo(otherFileContentScanner) < 0);
         fileContentScanner.setValue("BB");
-        assertTrue(fileContentScanner.compareTo(otherFileContentScanner) == 0);
+        assertEquals(0, fileContentScanner.compareTo(otherFileContentScanner));
         fileContentScanner.setValue("24");
         otherFileContentScanner.setValue("12");
         assertTrue(fileContentScanner.compareTo(otherFileContentScanner) > 0);
         assertFalse(fileContentScanner.compareTo(otherFileContentScanner) < 0);
         otherFileContentScanner.setValue("24");
-        assertTrue(fileContentScanner.compareTo(otherFileContentScanner) == 0);
+        assertEquals(0, fileContentScanner.compareTo(otherFileContentScanner));
         otherFileContentScanner.setValue("4555555555555555555555555555555555645645");
         assertFalse(fileContentScanner.compareTo(otherFileContentScanner) > 0);
     }
