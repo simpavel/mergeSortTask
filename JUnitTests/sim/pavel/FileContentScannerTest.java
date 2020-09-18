@@ -9,17 +9,13 @@ import java.util.Scanner;
 import static org.junit.jupiter.api.Assertions.*;
 
 class FileContentScannerTest {
-    Properties properties;
-    FileMerger fileMerger;
-    FileContentScanner fileContentScanner;
+    private FileContentScanner fileContentScanner;
 
     @BeforeEach
-        public void initEach() {
+    void initEach() {
         Properties properties = Properties.fromArgs(new String[] {"-a", "-i", "JUNITout.txt", "JUNITinput1.txt"});
         FileMerger fileMerger = new FileMerger(properties);
         fileMerger.writeMergedFiles(properties.getOutputFileName());
-        this.properties = properties;
-        this.fileMerger = fileMerger;
         FileContentScanner fileContentScanner = new FileContentScanner();
         fileContentScanner.setValue("firstScannerValue");
         this.fileContentScanner = fileContentScanner;
@@ -34,18 +30,6 @@ class FileContentScannerTest {
     void setValue() {
         fileContentScanner.setValue(null);
         assertNull(fileContentScanner.getValue());
-    }
-
-    @Disabled
-    void scanNextValue() {
-    }
-
-    @Disabled
-    void hasNext() {
-    }
-
-    @Disabled
-    void getValueAndScanNext() {
     }
 
     @Test

@@ -20,19 +20,15 @@ public class FileMerger { //Класс отвечает за слияние за
         this.inputFileNames = properties.getInputFileNames();
     }
 
-    public void writeMergedFiles(String outputFileName) {
+    void writeMergedFiles(String outputFileName) {
         try { //создаем writer для выходного файла
             Writer writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(outputFileName), StandardCharsets.UTF_8));
             mergeData(writer);
             writer.close();
         } catch(Exception e) {
+            log().warning(e.getMessage());
             e.printStackTrace();
         }
-    }
-
-    //добавил чтобы тесты делать
-    public ArrayList<FileContentScanner> getScanners() {
-        return scanners;
     }
 
     //возвращаем сканнер с наименьшим/наибольшим значением (в зависимости от метода сортировки)
