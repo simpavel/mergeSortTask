@@ -14,10 +14,12 @@ public class FileMerger { //Класс отвечает за слияние за
     private ArrayList<FileContentScanner> scanners = new ArrayList<>(); //список сканнеров (каждый сканнер отвечает за отдельный входной файл)
     private final boolean descendingSortOrder;
     private final List<String> inputFileNames;
+    private boolean dataTypeInt;
 
     public FileMerger(Properties properties) {
         this.descendingSortOrder = properties.isDescendingSortOrder();
         this.inputFileNames = properties.getInputFileNames();
+        this.dataTypeInt = properties.isDataTypeInt();
     }
 
     void writeMergedFiles(String outputFileName) {
@@ -54,7 +56,7 @@ public class FileMerger { //Класс отвечает за слияние за
             //Проверка на ненулевой входной файл
             if (fileContentScannerPath.length() > 0) {
                 try {
-                    scanners.add(new FileContentScanner((fileContentScannerPath)));
+                    scanners.add(new FileContentScanner((fileContentScannerPath), dataTypeInt));
                 } catch (Exception e) {
                     e.printStackTrace();
                     log().severe(e.getMessage());

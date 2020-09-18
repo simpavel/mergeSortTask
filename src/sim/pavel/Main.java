@@ -5,20 +5,19 @@ import java.util.Arrays;
 import static sim.pavel.MyLogger.log;
 
 public class Main {
-    //TODO regex
-    //TODO bufferedReader
-    //TODO priorityqueue?
+    //TODO bufferedReader - убираем классы со сканнером, делаем bufferedReader. Почему файл через бридер весит меньше??
+    //TODO запретить использование строк, если выбран параметр (тип для строк пофиг, а для цифр сделаем)
+    //TODO тесты для FileContentBufferedReaderScanner
 
     public static void main(String[] args) {
+
         long programStart = System.currentTimeMillis();
         System.out.println("Logger name: " + log().getName() + "\nProgram starts with arguments: " + Arrays.toString(args));
 
         Properties properties = Properties.fromArgs(args);
 
-//        FileMerger fileMerger = new FileMerger(properties);
-//        fileMerger.writeMergedFiles(properties.getOutputFileName()); //производим слияние
-        FileMergerForBufferedReader fileMergerForBufferedReader = new FileMergerForBufferedReader(properties);
-        fileMergerForBufferedReader.writeMergedFiles(properties.getOutputFileName()); //производим слияние
+        FileMerger fileMerger = new FileMerger(properties);
+        fileMerger.writeMergedFiles(properties.getOutputFileName()); //производим слияние
 
         System.out.println("Program took " + ((System.currentTimeMillis() - programStart) / 1000) + " seconds to " +
                 "execute. \n");
