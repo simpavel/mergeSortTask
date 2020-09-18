@@ -106,7 +106,6 @@ public class FileMerger { //Класс отвечает за слияние за
     private void skipScannerValueAndLogIt(FileContentScanner scannerWithHighestOrLowestValue) {
         log().log(Level.WARNING, "Element \"" + scannerWithHighestOrLowestValue.getValue().trim() + "\" from file " +
                 scannerWithHighestOrLowestValue.source + " has been skipped because Value was invalid");
-        MyLogger.incrementExcludedStringsWithSpacesCount();
         scannerWithHighestOrLowestValue.getValueAndScanNext();
     }
 
