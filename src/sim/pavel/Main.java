@@ -15,8 +15,10 @@ public class Main {
 
         Properties properties = Properties.fromArgs(args);
 
-        FileMerger fileMerger = new FileMerger(properties);
-        fileMerger.writeMergedFiles(properties.getOutputFileName()); //производим слияние
+//        FileMerger fileMerger = new FileMerger(properties);
+//        fileMerger.writeMergedFiles(properties.getOutputFileName()); //производим слияние
+        FileMergerForBufferedReader fileMergerForBufferedReader = new FileMergerForBufferedReader(properties);
+        fileMergerForBufferedReader.writeMergedFiles(properties.getOutputFileName()); //производим слияние
 
         System.out.println("Program took " + ((System.currentTimeMillis() - programStart) / 1000) + " seconds to " +
                 "execute. \n");
