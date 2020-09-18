@@ -16,7 +16,7 @@ public class Main {
 
         System.out.println("\nProgram took \"" + MyLogger.getElapsedTime()
                 + "\"seconds to execute \n" + "We had \"" + MyLogger.getExcludedStringsWithSpacesCount() + "\""
-                + " excluded elements due to unsorted input files. \nFor more information see logfile @ \""
+                + " excluded elements due to unsorted input files. \nFor more information see logfile @\""
                 + MyLogger.getLogFilePath()
         );
     }
