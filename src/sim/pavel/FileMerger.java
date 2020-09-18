@@ -71,7 +71,6 @@ public class FileMerger { //Класс отвечает за слияние за
 
     private void mergeData(Writer writer) throws IOException {
         makeListOfInputFileScanners(inputFileNames);
-        //сканнер с наибольшим/наименьшим значением:
         FileContentScanner scannerWithGoalValue = getScannerWithHighestOrLowestValue();
         //previouslyAddedScanner заводим для отслеживания последнего добавленного в выходной файл значения
         //это нужно для того, чтобы отследить ситуацию, когда один из входных файлов окажется не отсортированным
@@ -84,7 +83,6 @@ public class FileMerger { //Класс отвечает за слияние за
                     skipScannerValueAndLogIt(scannerWithGoalValue);
                 } else {
                     scannerWithPreviouslyWrittenValue.setValue(scannerWithGoalValue.getValue().trim());
-                    //TODO здесь эта \n даёт в конце файла лишний newline. Мб убрать это
                     writer.write(scannerWithGoalValue.getValueAndScanNext() + "\n");
                 }
                 if (scannerWithGoalValue.hasNext()) {
@@ -99,7 +97,7 @@ public class FileMerger { //Класс отвечает за слияние за
 
     //Если считанное значение либо из неотсортированного списка, либо имеет пробелы (пункт задания про пробелы)
     private boolean isInputValueIncorrect(FileContentScanner scannerWithGoalValue, FileContentScanner previouslyAddedScanner) {
-        return scannerWithGoalValue.getValue().matches("(\\s+)") || (isInputFileUnsorted(descendingSortOrder, previouslyAddedScanner, scannerWithGoalValue));
+        return scannerWithGoalValue.getValue().trim().matches("^(.*)(\\s+)(.*)$") || (isInputFileUnsorted(descendingSortOrder, previouslyAddedScanner, scannerWithGoalValue));
     }
 
     //Не записываем значение сканнера, выводим информацию в лог и сканируем следующее значение.

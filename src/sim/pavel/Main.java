@@ -7,7 +7,6 @@ import static sim.pavel.MyLogger.log;
 public class Main {
     //TODO regex
     //TODO bufferedReader
-    //TODO logger methods
     //TODO priorityqueue?
 
     public static void main(String[] args) {
