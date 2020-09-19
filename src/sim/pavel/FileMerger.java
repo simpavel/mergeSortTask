@@ -39,93 +39,93 @@ public class FileMerger {
 
     //возвращаем сканнер с наименьшим/наибольшим значением (в зависимости от метода сортировки)
     //в зависимости от состояния descendingSortOrder делаем соответствующую сортировку
-    private FileContentScanner getScannerWithHighestOrLowestValue() {
+    private FileContentScanner getReaderWithHighestOrLowestValue() {
         if (bufferedReaders.size() == 0) return null;
 
-        FileContentScanner scannerWithHighestOrLowestValue = bufferedReaders.get(0);
-        for (FileContentScanner scanner : bufferedReaders) {
-            if ((scannerWithHighestOrLowestValue.compareTo(scanner) >= 0) && !descendingSortOrder) {
-                scannerWithHighestOrLowestValue = scanner;
+        FileContentScanner readerWithHighestOrLowestValue = bufferedReaders.get(0);
+        for (FileContentScanner reader : bufferedReaders) {
+            if ((readerWithHighestOrLowestValue.compareTo(reader) >= 0) && !descendingSortOrder) {
+                readerWithHighestOrLowestValue = reader;
             }
-            if ((scannerWithHighestOrLowestValue.compareTo(scanner) <= 0) && descendingSortOrder) {
-                scannerWithHighestOrLowestValue = scanner;
+            if ((readerWithHighestOrLowestValue.compareTo(reader) <= 0) && descendingSortOrder) {
+                readerWithHighestOrLowestValue = reader;
 
             }
         }
-        return scannerWithHighestOrLowestValue;
+        return readerWithHighestOrLowestValue;
     }
 
-    private void makeListOfInputFileScanners(List<String> inputFileNames) {
+    private void makeAListOfReaders(List<String> inputFileNames) {
         for (String filename : inputFileNames) {
-            File fileContentScannerPath = new File(filename);
+            File sourceFileName = new File(filename);
             //Проверка на ненулевой входной файл
-            if (fileContentScannerPath.length() > 0) {
+            if (sourceFileName.length() > 0) {
                 try {
-                    bufferedReaders.add(new FileContentScanner((fileContentScannerPath), descendingSortOrder));
+                    bufferedReaders.add(new FileContentScanner((sourceFileName), descendingSortOrder));
                 } catch (Exception e) {
                     e.printStackTrace();
                     log().severe(e.getMessage());
                 }
             } else {
-                log().warning("Error opening input file : \"" + fileContentScannerPath.getName() +
+                log().warning("Error opening input file : \"" + sourceFileName.getName() +
                         "\" : file is empty/doesn't exist");
             }
         }
     }
 
-    private void removeFromScannersList(FileContentScanner scannerToRemove) {
-        bufferedReaders.remove(scannerToRemove);
+    private void removeFromReaderLists(FileContentScanner readerToRemove) {
+        bufferedReaders.remove(readerToRemove);
     }
 
     private void mergeData(Writer writer) throws IOException {
-        makeListOfInputFileScanners(inputFileNames);
-        FileContentScanner scannerWithGoalValue = getScannerWithHighestOrLowestValue();
+        makeAListOfReaders(inputFileNames);
+        FileContentScanner readerWithGoalValue = getReaderWithHighestOrLowestValue();
         //previouslyAddedScanner заводим для отслеживания последнего добавленного в выходной файл значения
         //это нужно для того, чтобы отследить ситуацию, когда один из входных файлов окажется не отсортированным
-        FileContentScanner scannerWithPreviouslyWrittenValue = new FileContentScanner();
-        scannerWithPreviouslyWrittenValue.setValue(Objects.requireNonNull
-                (getScannerWithHighestOrLowestValue()).getValue());
+        FileContentScanner readerWithPreviouslyWrittenValue = new FileContentScanner();
+        readerWithPreviouslyWrittenValue.setValue(Objects.requireNonNull
+                (getReaderWithHighestOrLowestValue()).getValue());
         //идём по всем сканнерам, записывая из них самое высокое/низкое значение, пока сканнеры не кончатся
-        while(scannerWithGoalValue != null) {
-            if((scannerWithGoalValue.hasNext())) {
-                if (isInputValueIncorrect(scannerWithGoalValue, scannerWithPreviouslyWrittenValue)) {
-                    skipScannerValueAndLogIt(scannerWithGoalValue);
+        while(readerWithGoalValue != null) {
+            if((readerWithGoalValue.hasNext())) {
+                if (isInputValueIncorrect(readerWithGoalValue, readerWithPreviouslyWrittenValue)) {
+                    skipReaderValueAndLogIt(readerWithGoalValue);
                 } else {
-                    scannerWithPreviouslyWrittenValue.setValue(scannerWithGoalValue.getValue());
-                    writer.write(scannerWithGoalValue.getValueAndScanNext() + "\n");
+                    readerWithPreviouslyWrittenValue.setValue(readerWithGoalValue.getValue());
+                    writer.write(readerWithGoalValue.getValueAndReadNext() + "\n");
                 }
-                if (scannerWithGoalValue.hasNext()) {
-                    scannerWithGoalValue = getScannerWithHighestOrLowestValue();
+                if (readerWithGoalValue.hasNext()) {
+                    readerWithGoalValue = getReaderWithHighestOrLowestValue();
                 }
             } else {
-                removeFromScannersList(scannerWithGoalValue);
-                scannerWithGoalValue = getScannerWithHighestOrLowestValue();
+                removeFromReaderLists(readerWithGoalValue);
+                readerWithGoalValue = getReaderWithHighestOrLowestValue();
             }
         }
     }
 
     //Если считанное значение либо из неотсортированного списка, либо имеет пробелы (пункт задания про пробелы)
     //либо программа, запущенная с аргументом -i(для сортировки чисел) получает из входного файла строки
-    private boolean isInputValueIncorrect(FileContentScanner scannerWithGoalValue,
-                                          FileContentScanner previouslyAddedScanner) {
-        return scannerWithGoalValue.getValue().matches("^(.*)(\\s+)(.*)$") ||
-                (isInputFileUnsorted(descendingSortOrder, previouslyAddedScanner, scannerWithGoalValue)) ||
-                ((scannerWithGoalValue.getValue().matches("\\D+")) && (dataTypeInt));
+    private boolean isInputValueIncorrect(FileContentScanner readerWithGoalValue,
+                                          FileContentScanner previouslyAddedReader) {
+        return readerWithGoalValue.getValue().matches("^(.*)(\\s+)(.*)$") ||
+                (isInputFileUnsorted(descendingSortOrder, previouslyAddedReader, readerWithGoalValue)) ||
+                ((readerWithGoalValue.getValue().matches("\\D+")) && (dataTypeInt));
     }
 
     //Не записываем значение сканнера, выводим информацию в лог и сканируем следующее значение.
-    private void skipScannerValueAndLogIt(FileContentScanner scannerWithHighestOrLowestValue) {
-        log().log(Level.WARNING, "Element \"" + scannerWithHighestOrLowestValue.getValue() + "\" from file " +
-                scannerWithHighestOrLowestValue.source + " has been skipped because Value was invalid");
-        scannerWithHighestOrLowestValue.getValueAndScanNext();
+    private void skipReaderValueAndLogIt(FileContentScanner readerWithHighestOrLowestValue) {
+        log().log(Level.WARNING, "Element \"" + readerWithHighestOrLowestValue.getValue() + "\" from file " +
+                readerWithHighestOrLowestValue.source + " has been skipped because Value was invalid");
+        readerWithHighestOrLowestValue.getValueAndReadNext();
     }
 
     //нарушен ли порядок сортировки во входном файле
-    private boolean isInputFileUnsorted(boolean descendingSortOrder, FileContentScanner previouslyAddedScanner,
-                                        FileContentScanner scannerWithGoalValue) {
-        if (descendingSortOrder && previouslyAddedScanner.compareTo(scannerWithGoalValue) < 0) {
+    private boolean isInputFileUnsorted(boolean descendingSortOrder, FileContentScanner previouslyAddedReader,
+                                        FileContentScanner readerWithGoalValue) {
+        if (descendingSortOrder && previouslyAddedReader.compareTo(readerWithGoalValue) < 0) {
             return true;
         }
-        return !descendingSortOrder && previouslyAddedScanner.compareTo(scannerWithGoalValue) > 0;
+        return !descendingSortOrder && previouslyAddedReader.compareTo(readerWithGoalValue) > 0;
     }
 }

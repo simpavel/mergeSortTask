@@ -50,7 +50,7 @@ public class FileContentScanner {
         return (currentValue != null);
     }
 
-    String getValueAndScanNext() {
+    String getValueAndReadNext() {
         String scannedValue = currentValue;
         scanNextValue();
 
