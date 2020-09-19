@@ -8,7 +8,7 @@ import java.util.logging.SimpleFormatter;
 //Я так понимаю, что это utility класс такой. Тогда не нужно создавать его объекты и лучше запретить это делать,
 //сделав единственный конструктор приватным
 class MyLogger {
-    private static final String logFilePath = "test\\LogFile.txt";
+    private static final String logFilePath = "LogFile.txt";
     private static final Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
     private static FileHandler fileHandler;
 

@@ -7,9 +7,12 @@ import static sim.pavel.MyLogger.log;
 
 //в этом классе храним данные по входным и выходному файлам (входных может быть более одного)
 public class Properties {
-    private final boolean descendingSortOrder; //Режим сортировки по умолчанию - возрастающий
-    private final boolean dataTypeInt; //Вид данных по умолчанию - String (вообще не уверен, зачем мне он нужен, я вроде в FileContentScanner.Compareto сделал так, чтобы было пофиг на вид данных
-    private final List<String> inputFileNames; //Список путей к входным файлам
+    //Режим сортировки по умолчанию - возрастающий
+    private final boolean descendingSortOrder;
+    //Вид данных по умолчанию - String
+    private final boolean dataTypeInt;
+    //Список путей к входным файлам
+    private final List<String> inputFileNames;
     private final String outputFileName;
 
     private Properties(boolean descendingSortOrder, boolean dataTypeInt,
@@ -21,9 +24,11 @@ public class Properties {
     }
 
     public static Properties fromArgs(String[] args) {
-        boolean descendingSortOrder = args[0].equals("-d"); //Устанавливаем descendingOrder в соответствии с полученным параметром
-        int argumentIndex = args[0].matches("^[-][a|d]$") ? 1 : 0; //Смотрим, содержит ли первый аргумент -a или -d
+        //Устанавливаем descendingOrder в соответствии с полученным параметром
+        boolean descendingSortOrder = args[0].equals("-d");
+        //Смотрим, содержит ли первый аргумент -a или -d:
         // (т.к. это не обязательный параметр) если этого параметра не было указано, то следующий параметр будет в индексе args[0]
+        int argumentIndex = args[0].matches("^[-][a|d]$") ? 1 : 0;
         boolean dataTypeIsInt = false;
         String outputFileName = "";
 
@@ -38,7 +43,8 @@ public class Properties {
         }
 
         List<String> inputFileNames = new ArrayList<>();
-        for (; argumentIndex < args.length; argumentIndex++) { //все остальные аргументы - пути к входным файлам
+        //все остальные аргументы - пути к входным файлам
+        for (; argumentIndex < args.length; argumentIndex++) {
             inputFileNames.add(args[argumentIndex]);
         }
 
@@ -60,6 +66,4 @@ public class Properties {
     public String getOutputFileName() {
         return outputFileName;
     }
-
-    //Перенёс метод initializeScanners в properties - уберем статик
 }

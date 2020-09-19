@@ -9,9 +9,11 @@ import java.util.logging.Level;
 
 import static sim.pavel.MyLogger.log;
 
-public class FileMerger { //Класс отвечает за слияние заранее отсортированных файлов в один большой отсортированный файл
+//Класс отвечает за слияние заранее отсортированных файлов в один большой отсортированный файл
+public class FileMerger {
 
-    private ArrayList<FileContentScanner> scanners = new ArrayList<>(); //список сканнеров (каждый сканнер отвечает за отдельный входной файл)
+    //список сканнеров (каждый сканнер отвечает за отдельный входной файл)
+    private ArrayList<FileContentScanner> scanners = new ArrayList<>();
     private final boolean descendingSortOrder;
     private final List<String> inputFileNames;
     private boolean dataTypeInt;
@@ -23,7 +25,8 @@ public class FileMerger { //Класс отвечает за слияние за
     }
 
     void writeMergedFiles(String outputFileName) {
-        try { //создаем writer для выходного файла
+        try {
+            //создаем writer для выходного файла
             Writer writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(outputFileName), StandardCharsets.UTF_8));
             mergeData(writer);
             writer.close();
