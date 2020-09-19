@@ -61,7 +61,7 @@ public class FileMerger {
             //Проверка на ненулевой входной файл
             if (fileContentScannerPath.length() > 0) {
                 try {
-                    bufferedReaders.add(new FileContentScanner((fileContentScannerPath), dataTypeInt, descendingSortOrder));
+                    bufferedReaders.add(new FileContentScanner((fileContentScannerPath), descendingSortOrder));
                 } catch (Exception e) {
                     e.printStackTrace();
                     log().severe(e.getMessage());

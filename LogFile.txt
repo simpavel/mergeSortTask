@@ -1,48 +1,48 @@
-сент. 19, 2020 2:53:31 PM sim.pavel.Main main
+сент. 19, 2020 2:54:17 PM sim.pavel.Main main
 INFO: Logger name: global
 Program starts with arguments: [-a, -i, test\\out.txt, test\\in1.txt, test\\in2.txt, test\\in3.txt, test\\in4.txt, test\\in5.txt]
-сент. 19, 2020 2:53:31 PM sim.pavel.FileMerger makeListOfInputFileScanners
+сент. 19, 2020 2:54:17 PM sim.pavel.FileMerger makeListOfInputFileScanners
 WARNING: Error opening input file : "in3.txt" : file is empty/doesn't exist
-сент. 19, 2020 2:53:31 PM sim.pavel.FileMerger skipScannerValueAndLogIt
+сент. 19, 2020 2:54:17 PM sim.pavel.FileMerger skipScannerValueAndLogIt
 WARNING: Element "8" from file test\in4.txt has been skipped because Value was invalid
-сент. 19, 2020 2:53:31 PM sim.pavel.FileMerger skipScannerValueAndLogIt
+сент. 19, 2020 2:54:17 PM sim.pavel.FileMerger skipScannerValueAndLogIt
 WARNING: Element "5" from file test\in5.txt has been skipped because Value was invalid
-сент. 19, 2020 2:53:31 PM sim.pavel.FileMerger skipScannerValueAndLogIt
+сент. 19, 2020 2:54:17 PM sim.pavel.FileMerger skipScannerValueAndLogIt
 WARNING: Element "4" from file test\in5.txt has been skipped because Value was invalid
-сент. 19, 2020 2:53:31 PM sim.pavel.FileMerger skipScannerValueAndLogIt
+сент. 19, 2020 2:54:17 PM sim.pavel.FileMerger skipScannerValueAndLogIt
 WARNING: Element "8" from file test\in5.txt has been skipped because Value was invalid
-сент. 19, 2020 2:53:31 PM sim.pavel.FileMerger skipScannerValueAndLogIt
+сент. 19, 2020 2:54:17 PM sim.pavel.FileMerger skipScannerValueAndLogIt
 WARNING: Element "9" from file test\in5.txt has been skipped because Value was invalid
-сент. 19, 2020 2:53:31 PM sim.pavel.FileMerger skipScannerValueAndLogIt
+сент. 19, 2020 2:54:17 PM sim.pavel.FileMerger skipScannerValueAndLogIt
 WARNING: Element "5" from file test\in2.txt has been skipped because Value was invalid
-сент. 19, 2020 2:53:31 PM sim.pavel.FileMerger skipScannerValueAndLogIt
+сент. 19, 2020 2:54:17 PM sim.pavel.FileMerger skipScannerValueAndLogIt
 WARNING: Element "4" from file test\in2.txt has been skipped because Value was invalid
-сент. 19, 2020 2:53:31 PM sim.pavel.FileMerger skipScannerValueAndLogIt
+сент. 19, 2020 2:54:17 PM sim.pavel.FileMerger skipScannerValueAndLogIt
 WARNING: Element "8" from file test\in2.txt has been skipped because Value was invalid
-сент. 19, 2020 2:53:31 PM sim.pavel.FileMerger skipScannerValueAndLogIt
+сент. 19, 2020 2:54:17 PM sim.pavel.FileMerger skipScannerValueAndLogIt
 WARNING: Element "9" from file test\in2.txt has been skipped because Value was invalid
-сент. 19, 2020 2:53:31 PM sim.pavel.FileMerger skipScannerValueAndLogIt
+сент. 19, 2020 2:54:17 PM sim.pavel.FileMerger skipScannerValueAndLogIt
 WARNING: Element "5" from file test\in1.txt has been skipped because Value was invalid
-сент. 19, 2020 2:53:31 PM sim.pavel.FileMerger skipScannerValueAndLogIt
+сент. 19, 2020 2:54:17 PM sim.pavel.FileMerger skipScannerValueAndLogIt
 WARNING: Element "4" from file test\in1.txt has been skipped because Value was invalid
-сент. 19, 2020 2:53:31 PM sim.pavel.FileMerger skipScannerValueAndLogIt
+сент. 19, 2020 2:54:17 PM sim.pavel.FileMerger skipScannerValueAndLogIt
 WARNING: Element "eeqweq eee" from file test\in1.txt has been skipped because Value was invalid
-сент. 19, 2020 2:53:31 PM sim.pavel.FileMerger skipScannerValueAndLogIt
+сент. 19, 2020 2:54:17 PM sim.pavel.FileMerger skipScannerValueAndLogIt
 WARNING: Element "qwe" from file test\in1.txt has been skipped because Value was invalid
-сент. 19, 2020 2:53:31 PM sim.pavel.FileMerger skipScannerValueAndLogIt
+сент. 19, 2020 2:54:17 PM sim.pavel.FileMerger skipScannerValueAndLogIt
 WARNING: Element "8" from file test\in1.txt has been skipped because Value was invalid
-сент. 19, 2020 2:53:31 PM sim.pavel.FileMerger skipScannerValueAndLogIt
+сент. 19, 2020 2:54:17 PM sim.pavel.FileMerger skipScannerValueAndLogIt
 WARNING: Element "ewq" from file test\in1.txt has been skipped because Value was invalid
-сент. 19, 2020 2:53:31 PM sim.pavel.FileMerger skipScannerValueAndLogIt
+сент. 19, 2020 2:54:17 PM sim.pavel.FileMerger skipScannerValueAndLogIt
 WARNING: Element "9" from file test\in1.txt has been skipped because Value was invalid
-сент. 19, 2020 2:53:31 PM sim.pavel.FileMerger skipScannerValueAndLogIt
+сент. 19, 2020 2:54:17 PM sim.pavel.FileMerger skipScannerValueAndLogIt
 WARNING: Element "32490382490238904" from file test\in1.txt has been skipped because Value was invalid
-сент. 19, 2020 2:53:31 PM sim.pavel.FileMerger skipScannerValueAndLogIt
+сент. 19, 2020 2:54:17 PM sim.pavel.FileMerger skipScannerValueAndLogIt
 WARNING: Element "123128312838128383" from file test\in1.txt has been skipped because Value was invalid
-сент. 19, 2020 2:53:31 PM sim.pavel.FileMerger skipScannerValueAndLogIt
+сент. 19, 2020 2:54:17 PM sim.pavel.FileMerger skipScannerValueAndLogIt
 WARNING: Element "1239129312931923912" from file test\in1.txt has been skipped because Value was invalid
-сент. 19, 2020 2:53:31 PM sim.pavel.FileMerger skipScannerValueAndLogIt
+сент. 19, 2020 2:54:17 PM sim.pavel.FileMerger skipScannerValueAndLogIt
 WARNING: Element "12939123129312939335" from file test\in1.txt has been skipped because Value was invalid
-сент. 19, 2020 2:53:31 PM sim.pavel.Main main
+сент. 19, 2020 2:54:17 PM sim.pavel.Main main
 INFO: Program took 0 seconds to execute. 
 

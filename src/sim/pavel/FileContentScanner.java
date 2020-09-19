@@ -12,7 +12,7 @@ public class FileContentScanner {
     private String currentValue;
     String source;
 
-    public FileContentScanner(File source, boolean isDataTypeInt, boolean descendingSortOrder) throws Exception {
+    public FileContentScanner(File source, boolean descendingSortOrder) throws Exception {
         this.source = source.toString();
         if (descendingSortOrder) {
             this.bufferedReader = new BufferedReader(new InputStreamReader(new ReverseInputStream(source)));
