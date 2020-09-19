@@ -24,7 +24,7 @@ public class Properties {
     }
 
     static Properties fromArgs(String[] args) {
-        if (args.length < 4) {
+        if (args.length < 3) {
             log().severe("args.length has to be at least 3 (i.e. \"-i, output.txt, input.txt\")");
             System.exit(1);
         }
