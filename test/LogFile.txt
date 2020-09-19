@@ -1,18 +1,16 @@
-сент. 19, 2020 12:28:23 PM sim.pavel.FileMerger makeListOfInputFileScanners
-WARNING: Error opening input file : "in3.txt" : file is empty/doesn't exist
-сент. 19, 2020 12:28:23 PM sim.pavel.FileMerger skipScannerValueAndLogIt
-WARNING: Element "12939123129312939337" from file test\in1.txt has been skipped because Value was invalid
-сент. 19, 2020 12:28:23 PM sim.pavel.FileMerger skipScannerValueAndLogIt
-WARNING: Element "9" from file test\in4.txt has been skipped because Value was invalid
-сент. 19, 2020 12:28:23 PM sim.pavel.FileMerger skipScannerValueAndLogIt
-WARNING: Element "5" from file test\in5.txt has been skipped because Value was invalid
-сент. 19, 2020 12:28:23 PM sim.pavel.FileMerger skipScannerValueAndLogIt
-WARNING: Element "10" from file test\in5.txt has been skipped because Value was invalid
-сент. 19, 2020 12:28:23 PM sim.pavel.FileMerger skipScannerValueAndLogIt
-WARNING: Element "5" from file test\in2.txt has been skipped because Value was invalid
-сент. 19, 2020 12:28:23 PM sim.pavel.FileMerger skipScannerValueAndLogIt
-WARNING: Element "10" from file test\in2.txt has been skipped because Value was invalid
-сент. 19, 2020 12:28:23 PM sim.pavel.FileMerger skipScannerValueAndLogIt
-WARNING: Element "5" from file test\in1.txt has been skipped because Value was invalid
-сент. 19, 2020 12:28:23 PM sim.pavel.FileMerger skipScannerValueAndLogIt
-WARNING: Element "10" from file test\in1.txt has been skipped because Value was invalid
+сент. 19, 2020 12:30:57 PM sim.pavel.FileMerger makeListOfInputFileScanners
+WARNING: Error opening input file : "in4str.txt" : file is empty/doesn't exist
+сент. 19, 2020 12:30:57 PM sim.pavel.FileMerger makeListOfInputFileScanners
+WARNING: Error opening input file : "in5str.txt" : file is empty/doesn't exist
+сент. 19, 2020 12:30:57 PM sim.pavel.FileMerger skipScannerValueAndLogIt
+WARNING: Element "дяяя едеде" from file test\in3str.txt has been skipped because Value was invalid
+сент. 19, 2020 12:30:57 PM sim.pavel.FileMerger skipScannerValueAndLogIt
+WARNING: Element "дирижабль дирижабль дирижабль" from file test\in3str.txt has been skipped because Value was invalid
+сент. 19, 2020 12:30:57 PM sim.pavel.FileMerger skipScannerValueAndLogIt
+WARNING: Element "d" from file test\in1str.txt has been skipped because Value was invalid
+сент. 19, 2020 12:30:57 PM sim.pavel.FileMerger skipScannerValueAndLogIt
+WARNING: Element "Q    P" from file test\in3str.txt has been skipped because Value was invalid
+сент. 19, 2020 12:30:57 PM sim.pavel.FileMerger skipScannerValueAndLogIt
+WARNING: Element "D 		D" from file test\in3str.txt has been skipped because Value was invalid
+сент. 19, 2020 12:30:57 PM sim.pavel.FileMerger skipScannerValueAndLogIt
+WARNING: Element "A   	  A" from file test\in3str.txt has been skipped because Value was invalid
