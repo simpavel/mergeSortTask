@@ -1,5 +1,2 @@
-сент. 19, 2020 2:08:38 PM sim.pavel.Main main
-INFO: Logger name: global
-Program starts with arguments: []
-сент. 19, 2020 2:08:38 PM sim.pavel.Properties fromArgs
+сент. 19, 2020 2:18:52 PM sim.pavel.Properties fromArgs
 SEVERE: args.length has to be at least 3 (i.e. "-i, output.txt, input.txt")

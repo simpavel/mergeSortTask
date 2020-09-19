@@ -23,14 +23,14 @@ public class Properties {
         this.outputFileName = outputFileName;
     }
 
-    public static Properties fromArgs(String[] args) {
+    static Properties fromArgs(String[] args) {
         if (args.length < 4) {
             log().severe("args.length has to be at least 3 (i.e. \"-i, output.txt, input.txt\")");
             System.exit(1);
         }
 
         //Устанавливаем descendingOrder в соответствии с полученным параметром
-        boolean descendingSortOrder = false;
+        boolean descendingSortOrder;
             descendingSortOrder = args[0].equals("-d");
 
         //Смотрим, содержит ли первый аргумент -a или -d:
@@ -48,6 +48,7 @@ public class Properties {
             argumentIndex++;
         } else {
             log().severe("Invalid program arguments detected: " + args[argumentIndex] + " must be -i or -s");
+            System.exit(1);
         }
 
         List<String> inputFileNames = new ArrayList<>();
@@ -59,19 +60,19 @@ public class Properties {
         return new Properties(descendingSortOrder, dataTypeIsInt, inputFileNames, outputFileName);
     }
 
-    public boolean isDescendingSortOrder() {
+    boolean isDescendingSortOrder() {
         return descendingSortOrder;
     }
 
-    public boolean isDataTypeInt() {
+    boolean isDataTypeInt() {
         return dataTypeInt;
     }
 
-    public List<String> getInputFileNames() {
+    List<String> getInputFileNames() {
         return inputFileNames;
     }
 
-    public String getOutputFileName() {
+    String getOutputFileName() {
         return outputFileName;
     }
 }
