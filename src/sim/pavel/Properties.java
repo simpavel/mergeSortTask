@@ -25,14 +25,20 @@ public class Properties {
 
     public static Properties fromArgs(String[] args) {
         //Устанавливаем descendingOrder в соответствии с полученным параметром
-        boolean descendingSortOrder = args[0].equals("-d");
+        boolean descendingSortOrder = false;
+        try {
+            descendingSortOrder = args[0].equals("-d");
+        } catch (ArrayIndexOutOfBoundsException e) {
+            log().severe(e.getMessage() + " args[] are empty");
+        }
+
         //Смотрим, содержит ли первый аргумент -a или -d:
         // (т.к. это не обязательный параметр) если этого параметра не было указано, то следующий параметр будет в индексе args[0]
-        int argumentIndex = args[0].matches("^[-][a|d]$") ? 1 : 0;
+        int argumentIndex = args[0].matches("^-[a|d]$") ? 1 : 0;
         boolean dataTypeIsInt = false;
         String outputFileName = "";
 
-        if (args[argumentIndex].matches("^[-][i|s]$")) {
+        if (args[argumentIndex].matches("^-[i|s]$")) {
             dataTypeIsInt = (args[argumentIndex].equals("-i"));
             argumentIndex++;
 
