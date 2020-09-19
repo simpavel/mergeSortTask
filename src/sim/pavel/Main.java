@@ -5,8 +5,6 @@ import java.util.Arrays;
 import static sim.pavel.MyLogger.log;
 
 public class Main {
-
-    //TODO запретить использование строк, если выбран параметр (тип для строк пофиг, а для цифр сделаем) - с помощью запрета в hasNext
     //TODO сделать !инструкцию по запуску для задания
 
     public static void main(String[] args) {

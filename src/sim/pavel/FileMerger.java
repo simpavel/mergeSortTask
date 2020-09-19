@@ -99,8 +99,11 @@ public class FileMerger { //Класс отвечает за слияние за
     }
 
     //Если считанное значение либо из неотсортированного списка, либо имеет пробелы (пункт задания про пробелы)
+    //либо программа, запущенная с аргументом -i(для сортировки чисел) получает из входного файла строки
     private boolean isInputValueIncorrect(FileContentScanner scannerWithGoalValue, FileContentScanner previouslyAddedScanner) {
-        return scannerWithGoalValue.getValue().trim().matches("^(.*)(\\s+)(.*)$") || (isInputFileUnsorted(descendingSortOrder, previouslyAddedScanner, scannerWithGoalValue));
+        return scannerWithGoalValue.getValue().trim().matches("^(.*)(\\s+)(.*)$") ||
+                (isInputFileUnsorted(descendingSortOrder, previouslyAddedScanner, scannerWithGoalValue)) ||
+                ((scannerWithGoalValue.getValue().trim().matches("\\D+")) && (dataTypeInt));
     }
 
     //Не записываем значение сканнера, выводим информацию в лог и сканируем следующее значение.
