@@ -88,7 +88,7 @@ public class FileMerger {
                 if (isInputValueIncorrect(scannerWithGoalValue, scannerWithPreviouslyWrittenValue)) {
                     skipScannerValueAndLogIt(scannerWithGoalValue);
                 } else {
-                    scannerWithPreviouslyWrittenValue.setValue(scannerWithGoalValue.getValue().trim());
+                    scannerWithPreviouslyWrittenValue.setValue(scannerWithGoalValue.getValue());
                     writer.write(scannerWithGoalValue.getValueAndScanNext() + "\n");
                 }
                 if (scannerWithGoalValue.hasNext()) {
@@ -104,14 +104,14 @@ public class FileMerger {
     //Если считанное значение либо из неотсортированного списка, либо имеет пробелы (пункт задания про пробелы)
     //либо программа, запущенная с аргументом -i(для сортировки чисел) получает из входного файла строки
     private boolean isInputValueIncorrect(FileContentScanner scannerWithGoalValue, FileContentScanner previouslyAddedScanner) {
-        return scannerWithGoalValue.getValue().trim().matches("^(.*)(\\s+)(.*)$") ||
+        return scannerWithGoalValue.getValue().matches("^(.*)(\\s+)(.*)$") ||
                 (isInputFileUnsorted(descendingSortOrder, previouslyAddedScanner, scannerWithGoalValue)) ||
-                ((scannerWithGoalValue.getValue().trim().matches("\\D+")) && (dataTypeInt));
+                ((scannerWithGoalValue.getValue().matches("\\D+")) && (dataTypeInt));
     }
 
     //Не записываем значение сканнера, выводим информацию в лог и сканируем следующее значение.
     private void skipScannerValueAndLogIt(FileContentScanner scannerWithHighestOrLowestValue) {
-        log().log(Level.WARNING, "Element \"" + scannerWithHighestOrLowestValue.getValue().trim() + "\" from file " +
+        log().log(Level.WARNING, "Element \"" + scannerWithHighestOrLowestValue.getValue() + "\" from file " +
                 scannerWithHighestOrLowestValue.source + " has been skipped because Value was invalid");
         scannerWithHighestOrLowestValue.getValueAndScanNext();
     }
