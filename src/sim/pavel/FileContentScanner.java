@@ -12,10 +12,13 @@ public class FileContentScanner {
     private String currentValue;
     String source;
 
-    public FileContentScanner(File source, boolean isDataTypeInt) throws Exception {
+    public FileContentScanner(File source, boolean isDataTypeInt, boolean descendingSortOrder) throws Exception {
         this.source = source.toString();
-        this.
-        bufferedReader = new BufferedReader(new FileReader(source));
+        if (descendingSortOrder) {
+            this.bufferedReader = new BufferedReader(new InputStreamReader(new ReverseInputStream(source)));
+        } else {
+            this.bufferedReader = new BufferedReader(new FileReader(source));
+        }
         this.isDataTypeInt = isDataTypeInt;
         scanNextValue();
     }
