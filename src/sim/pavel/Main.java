@@ -5,9 +5,6 @@ import java.util.Arrays;
 import static sim.pavel.MyLogger.log;
 
 public class Main {
-    //TODO сделать !инструкцию по запуску для задания
-    //TODO если input файлов 0 - ошибку кинуть
-
     public static void main(String[] args) {
 
         long programStart = System.currentTimeMillis();
