@@ -8,15 +8,15 @@ import java.io.RandomAccessFile;
 
 public class ReverseInputStream extends InputStream {
 
-    RandomAccessFile in;
+    private RandomAccessFile in;
 
-    long currentLineStart = -1;
-    long currentLineEnd = -1;
-    long currentPos = -1;
-    long lastPosInFile = -1;
-    int lastChar = -1;
+    private long currentLineStart = -1;
+    private long currentLineEnd = -1;
+    private long currentPos = -1;
+    private long lastPosInFile = -1;
+    private int lastChar = -1;
 
-    public ReverseInputStream(File file) throws FileNotFoundException {
+    ReverseInputStream(File file) throws FileNotFoundException {
         in = new RandomAccessFile(file, "r");
         currentLineStart = file.length();
         currentLineEnd = file.length();
@@ -24,7 +24,7 @@ public class ReverseInputStream extends InputStream {
         currentPos = currentLineEnd;
     }
 
-    public void findPrevLine() throws IOException {
+    private void findPrevLine() throws IOException {
         if (lastChar == -1) {
             in.seek(lastPosInFile);
             lastChar = in.readByte();
@@ -41,7 +41,7 @@ public class ReverseInputStream extends InputStream {
 
         long filePointer = currentLineStart -1;
 
-        while ( true ) {
+        while (true) {
             filePointer--;
 
             // Достигнут конец файла
@@ -57,7 +57,7 @@ public class ReverseInputStream extends InputStream {
                 break;
             }
         }
-        // we want to start at pointer +1 so we are after the LF we found or at 0 the start of the file.
+        // начинаем с позиции filePointer + 1 чтобы пропустить newLine
         currentLineStart = filePointer + 1;
         currentPos = currentLineStart;
     }
@@ -66,13 +66,12 @@ public class ReverseInputStream extends InputStream {
 
         if (currentPos < currentLineEnd ) {
             in.seek(currentPos++);
-            int readByte = in.readByte();
-            return readByte;
+            return in.readByte();
         } else if (currentPos > lastPosInFile && currentLineStart < currentLineEnd) {
-            // last line in file (first returned)
+            // последняя строка в файле
             findPrevLine();
             if (lastChar != '\n' && lastChar != '\r') {
-                // last line is not terminated
+                // добавляем newLine
                 return '\n';
             } else {
                 return read();
@@ -82,14 +81,6 @@ public class ReverseInputStream extends InputStream {
         } else {
             findPrevLine();
             return read();
-        }
-    }
-
-    @Override
-    public void close() throws IOException {
-        if (in != null) {
-            in.close();
-            in = null;
         }
     }
 }
