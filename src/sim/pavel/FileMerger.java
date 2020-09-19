@@ -27,7 +27,8 @@ public class FileMerger {
     void writeMergedFiles(String outputFileName) {
         try {
             //создаем writer для выходного файла
-            Writer writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(outputFileName), StandardCharsets.UTF_8));
+            Writer writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(outputFileName),
+                    StandardCharsets.UTF_8));
             mergeData(writer);
             writer.close();
         } catch(Exception e) {
@@ -66,7 +67,8 @@ public class FileMerger {
                     log().severe(e.getMessage());
                 }
             } else {
-                log().warning("Error opening input file : \"" + fileContentScannerPath.getName() + "\" : file is empty/doesn't exist");
+                log().warning("Error opening input file : \"" + fileContentScannerPath.getName() +
+                        "\" : file is empty/doesn't exist");
             }
         }
     }
@@ -81,7 +83,8 @@ public class FileMerger {
         //previouslyAddedScanner заводим для отслеживания последнего добавленного в выходной файл значения
         //это нужно для того, чтобы отследить ситуацию, когда один из входных файлов окажется не отсортированным
         FileContentScanner scannerWithPreviouslyWrittenValue = new FileContentScanner();
-        scannerWithPreviouslyWrittenValue.setValue(Objects.requireNonNull(getScannerWithHighestOrLowestValue()).getValue());
+        scannerWithPreviouslyWrittenValue.setValue(Objects.requireNonNull
+                (getScannerWithHighestOrLowestValue()).getValue());
         //идём по всем сканнерам, записывая из них самое высокое/низкое значение, пока сканнеры не кончатся
         while(scannerWithGoalValue != null) {
             if((scannerWithGoalValue.hasNext())) {
@@ -103,7 +106,8 @@ public class FileMerger {
 
     //Если считанное значение либо из неотсортированного списка, либо имеет пробелы (пункт задания про пробелы)
     //либо программа, запущенная с аргументом -i(для сортировки чисел) получает из входного файла строки
-    private boolean isInputValueIncorrect(FileContentScanner scannerWithGoalValue, FileContentScanner previouslyAddedScanner) {
+    private boolean isInputValueIncorrect(FileContentScanner scannerWithGoalValue,
+                                          FileContentScanner previouslyAddedScanner) {
         return scannerWithGoalValue.getValue().matches("^(.*)(\\s+)(.*)$") ||
                 (isInputFileUnsorted(descendingSortOrder, previouslyAddedScanner, scannerWithGoalValue)) ||
                 ((scannerWithGoalValue.getValue().matches("\\D+")) && (dataTypeInt));
@@ -117,7 +121,8 @@ public class FileMerger {
     }
 
     //нарушен ли порядок сортировки во входном файле
-    private boolean isInputFileUnsorted(boolean descendingSortOrder, FileContentScanner previouslyAddedScanner, FileContentScanner scannerWithGoalValue) {
+    private boolean isInputFileUnsorted(boolean descendingSortOrder, FileContentScanner previouslyAddedScanner,
+                                        FileContentScanner scannerWithGoalValue) {
         if (descendingSortOrder && previouslyAddedScanner.compareTo(scannerWithGoalValue) < 0) {
             return true;
         }

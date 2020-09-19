@@ -11,7 +11,8 @@ public class Main {
     public static void main(String[] args) {
 
         long programStart = System.currentTimeMillis();
-        log().info("Logger name: " + log().getName() + "\nProgram starts with arguments: " + Arrays.toString(args));
+        log().info("Logger name: " + log().getName() + "\nProgram starts with arguments: " +
+                Arrays.toString(args));
 
         Properties properties = Properties.fromArgs(args);
 

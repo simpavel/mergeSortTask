@@ -31,7 +31,7 @@ public class ReverseInputStream extends InputStream {
         }
         currentLineEnd = currentLineStart;
 
-        // Достигнуто "начало" файла
+        // Строк больше нет, т.е. мы у начала файла
         if (currentLineEnd == 0) {
             currentLineEnd = -1;
             currentLineStart = -1;
@@ -44,7 +44,7 @@ public class ReverseInputStream extends InputStream {
         while (true) {
             filePointer--;
 
-            // Достигнут конец файла
+            // Начало файла
             if (filePointer < 0) {
                 break;
             }

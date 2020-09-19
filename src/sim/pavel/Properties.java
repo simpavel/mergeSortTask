@@ -24,16 +24,18 @@ public class Properties {
     }
 
     public static Properties fromArgs(String[] args) {
-        //Устанавливаем descendingOrder в соответствии с полученным параметром
-        boolean descendingSortOrder = false;
-        try {
-            descendingSortOrder = args[0].equals("-d");
-        } catch (ArrayIndexOutOfBoundsException e) {
-            log().severe(e.getMessage() + " args[] are empty");
+        if (args.length < 4) {
+            log().severe("args.length has to be at least 3 (i.e. \"-i, output.txt, input.txt\")");
+            System.exit(1);
         }
 
+        //Устанавливаем descendingOrder в соответствии с полученным параметром
+        boolean descendingSortOrder = false;
+            descendingSortOrder = args[0].equals("-d");
+
         //Смотрим, содержит ли первый аргумент -a или -d:
-        //(т.к. это не обязательный параметр) если этого параметра не было указано, то следующий параметр будет в индексе args[0]
+        //(т.к. это не обязательный параметр) если этого параметра не было указано, то следующий параметр
+        // будет в индексе args[0]
         int argumentIndex = args[0].matches("^-[a|d]$") ? 1 : 0;
         boolean dataTypeIsInt = false;
         String outputFileName = "";
