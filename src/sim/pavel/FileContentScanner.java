@@ -29,7 +29,7 @@ public class FileContentScanner {
     }
 
     String getValue() {
-        return currentValue.trim();
+        return currentValue;
     }
 
     void setValue(String currentValue) {
@@ -40,6 +40,7 @@ public class FileContentScanner {
 
         try {
             currentValue = (bufferedReader.readLine());
+            if (currentValue != null) currentValue = currentValue.trim();
         } catch (IOException e) {
             log().warning(e.getMessage());
         }

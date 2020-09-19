@@ -13,7 +13,7 @@ import static sim.pavel.MyLogger.log;
 public class FileMerger {
 
     //список сканнеров (каждый сканнер отвечает за отдельный входной файл)
-    private ArrayList<FileContentScanner> scanners = new ArrayList<>();
+    private ArrayList<FileContentScanner> bufferedReaders = new ArrayList<>();
     private final boolean descendingSortOrder;
     private final List<String> inputFileNames;
     private boolean dataTypeInt;
@@ -40,10 +40,10 @@ public class FileMerger {
     //возвращаем сканнер с наименьшим/наибольшим значением (в зависимости от метода сортировки)
     //в зависимости от состояния descendingSortOrder делаем соответствующую сортировку
     private FileContentScanner getScannerWithHighestOrLowestValue() {
-        if (scanners.size() == 0) return null;
+        if (bufferedReaders.size() == 0) return null;
 
-        FileContentScanner scannerWithHighestOrLowestValue = scanners.get(0);
-        for (FileContentScanner scanner : scanners) {
+        FileContentScanner scannerWithHighestOrLowestValue = bufferedReaders.get(0);
+        for (FileContentScanner scanner : bufferedReaders) {
             if ((scannerWithHighestOrLowestValue.compareTo(scanner) >= 0) && !descendingSortOrder) {
                 scannerWithHighestOrLowestValue = scanner;
             }
@@ -61,7 +61,7 @@ public class FileMerger {
             //Проверка на ненулевой входной файл
             if (fileContentScannerPath.length() > 0) {
                 try {
-                    scanners.add(new FileContentScanner((fileContentScannerPath), dataTypeInt, descendingSortOrder));
+                    bufferedReaders.add(new FileContentScanner((fileContentScannerPath), dataTypeInt, descendingSortOrder));
                 } catch (Exception e) {
                     e.printStackTrace();
                     log().severe(e.getMessage());
@@ -74,7 +74,7 @@ public class FileMerger {
     }
 
     private void removeFromScannersList(FileContentScanner scannerToRemove) {
-        scanners.remove(scannerToRemove);
+        bufferedReaders.remove(scannerToRemove);
     }
 
     private void mergeData(Writer writer) throws IOException {
